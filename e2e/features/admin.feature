@@ -21,13 +21,25 @@ Feature: Admin user features
     And that there is an existing entity registry with a schema
     When the API-admin user requests the creation of a new entity with correctly formatted data
     Then the entity is created
-
+ 
   @NotAdmin
   Scenario: An API user views an entity without specifying a format
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
     When the API-admin user requests the entity
     Then API-admin user can view the data in the native database format
+
+  @NotAdmin
+  Scenario: An API user views API information
+    Given that there is an existing entity registry
+    When an API user requests the OpenAPI documentation
+    Then the OpenAIP documentation is returned
+
+  Scenario: An API user submits a request to see if a resource is modified
+    Given that there is an existing entity registry
+    And that there is an existing entity in the registry
+    When the API user requests the entity
+    Then the response contains an ETag and a Last-Modified header
     
   Scenario: An API-admin user views an entity specifying a specific format
     Given that the API-admin user is authenticated
