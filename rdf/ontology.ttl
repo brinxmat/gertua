@@ -1,0 +1,100 @@
+@prefix : <__THIS_DOCUMENT__> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a owl:Ontology ;
+  dcterms:description "A simple vocabulary to hold UNIT-specific authority terms and provide relations to common vocabularies" ;
+  dcterms:title "UNIT entity vocabulary"@en ;
+  dcterms:title "UNIT entitetsvokabular"@no ;
+  vann:preferredNamespacePrefix "bsa" ;
+  vann:preferredNamespaceUri <__THIS_DOCUMENT__> .
+
+:ConceptScheme a rdfs:Class ;
+  rdfs:subClassOf skos:ConceptScheme ;
+  rdfs:label "Concept scheme"@en ;
+  rdfs:label "Begrepssett"@no ;
+  rdfs:description "A set of concepts that logically or organisationally belong together" .
+
+:Concept a rdfs:Class ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:label "Concept@en" ;
+  rdfs:label "Begrep"@no ;
+  rdfs:description "A concept is an abstract idea" .
+
+:identifier a rdfs:Property ;
+  rdfs:subPropertyOf dcterms:identifier ;
+  rdfs:label "identifier"@en ;
+  rdfs:label "identifikator"@no ;
+  rdfs:description "A unique identifier" ;
+  rdfs:domain :Concept ;
+  rdfs:range xsd:string .
+
+:preferredLabel a rdfs:Property
+  rdfs:subPropertyOf skos:prefLabel ;
+  rdfs:label "Preferred label"@en ;
+  rdfs:label "Foretrukket navn"@no ;
+  rdfs:description "A preferred label for a thing" ;
+  rdfs:domain :Concept, :ConceptScheme ;
+  rdfs:range rdf:langString .
+
+:alternativeLabel a rdfs:Property ;
+  rdfs::subPropertyOf skos:altLabel ;
+  rdfs:label "Alternative label"@en ;
+  rdfs:label "Alternativt navn"@no ;
+  rdfs:description "An alternative label for a thing" ;
+  rdfs:domain :Concept ;
+  rdfs:range :Concept .
+
+:narrower a rdfs:Property ;
+  rdfs:subPropertyOf skos:narrower ;
+  rdfs:label "Narrower"@en ;
+  rdfs:label "Underordnet begrep"@no ;
+  rdfs:description "If X is narrower than Y, then X has a subpart relation with Y" ;
+  rdfs:domain :Concept ;
+  rdfs:range :Concept .
+
+:broader a rdfs:Property ;
+  rdfs:subPropertyOf skos:broader ;
+  rdfs:label "Broader"@en ;
+  rdfs:label "Overordnet begrep"@no ;
+  rdfs:description "If X is broader than Y, then Y has a subpart relation with X" ;
+  rdfs:domain :Concept ;
+  rdfs:range :Concept .
+
+:related a rdfs:Property ;
+  rdfs:subPropertyOf skos:related ;
+  rdfs:label "Related"@en ;
+  rdfs:label "Relatert begrep"@no ;
+  rdfs:description "If X is related to Y, then X stands in some unspecified, but nevertheless relevant relation to Y" ;
+  rdfs:domain :Concept ;
+  rdfs:range :Concept .
+
+:deinition a rdfs:Property ;
+  rdfs:subPropertyOf skos:definition ;
+  rdfs:label "Definition"@en ;
+  rdfs:label "Beskrivelse"@no ;
+  rdfs:description "A complete definition of what the term means and how it is to be used" ;
+  rdfs:domain :Concept, :ConceptScheme ;
+  rdfs:range rdf:langString .
+
+:inScheme a rdfs:Property ;
+  rdfs:subPropertyOf skos:inScheme ;
+  rdfs:label "In concept scheme"@en ;
+  rdfs:label "I begrepssett"@no ;
+  rdfs:description "The relation between a concept and the concept scheme to which it belongs" ;
+  rdfs:domain :Concept ;
+  rdfs:range :ConceptScheme .
+
+:seeAlso a rdfs:Property ;
+  rdfs:subPropertyOf rdfs:seeAlso ;
+  rdfs:label "See also"@en ;
+  rdfs:label "Se også"@no ;
+  rdfs:description "A generic, unspecified relation for relevant information" ;
+  rdfs:domain :Concept, :ConceptScheme .
+
+

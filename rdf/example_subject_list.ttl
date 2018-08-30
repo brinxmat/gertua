@@ -1,0 +1,54 @@
+# Example data for "FakeVoc" vocabulary
+
+@prefix : <http://example.org/fakevoc/> .
+@prefix bsa: <http://example.org/bsa#> .
+
+<http://example.org/fakevoc> a bsa:ConceptScheme ;
+  bsa:preferredLabel "FakeVoc" ;
+  bsa:definition "Terms used in the definition of stuff; used as an example" ;
+  bsa:seeAlso <https://en.wikipedia.org/wiki/Celestial_Emporium_of_Benevolent_Knowledge> .
+
+<http://example.org/fakevoc/c00000> a :Concept ;
+  bsa:inScheme <http://example.org/fakevoc> ;
+  bsa:preferredLabel "Animals"@en ;
+  bsa:preferredLabel "Dyr"@no ;
+  bsa:alternativeLabel "Animalia"@en, "Animalia"@no ;
+  bsa:narrower :c00001, :c00003
+
+:c00001 a :Concept ;
+  bsa:inScheme <http://example.org/fakevoc> ;
+  bsa:preferredLabel "Those belonging to the emperor"@en ;
+  bsa:preferredLabel "De som hører til keiseren"@no ;
+  bsa:alternativeLabel "Keiserdyr"@no, "The emperor's animals"@en ;
+  bsa:broader :c00000 ;
+  bsa:definition "Animals that belong to the emperor"@en ;
+  bsa:narrower :c00002 .
+
+:c00002 a :Concept ;
+  bsa:inScheme <http://example.org/fakevoc> ;
+  bsa:preferredLabel "Giraffes"@en ;
+  bsa:preferredLabel "Sjiraffer"@no ;
+  bsa:alternativeLabel "Giraffer"@no, "Qilins"@en ;
+  bsa:broader :c00001 ;
+  bsa:definition "Magnificent animals of Africa"@en ;
+  bsa:related :c00004 .
+
+:c00003 a :Concept ;
+  bsa:inScheme <http://example.org/fakevoc> ;
+  bsa:preferredLabel "Enbalmed ones"@en ;
+  bsa:preferredLabel "De balsamerte"@no ;
+  bsa:alternativeLabel "Balsamerte dyr"@no, "The enbalmed"@en ;
+  bsa:broader :c00000 ;
+  bsa:definition "Animals that are enbalmed"@en ;
+  bsa:narrower :c00004 .
+
+:c00004 a :Concept ;
+  bsa:inScheme <http://example.org/fakevoc> ;
+  bsa:preferredLabel "Enbalmed qilins"@en ;
+  bsa:preferredLabel "Balsamerte qilins"@no ;
+  bsa:broader :c00003 ;
+  bsa:definition "Qilins that are enbalmed"@en ;
+  bsa:narrower :c00003 ;
+  bsa:related :c00002 .
+  
+ 
