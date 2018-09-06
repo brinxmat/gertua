@@ -8,14 +8,14 @@
   bsa:definition "Terms used in the definition of stuff; used as an example" ;
   bsa:seeAlso <https://en.wikipedia.org/wiki/Celestial_Emporium_of_Benevolent_Knowledge> .
 
-<http://example.org/fakevoc/c00000> a :Concept ;
+<http://example.org/fakevoc/c00000> a bsa:Concept ;
   bsa:inScheme <http://example.org/fakevoc> ;
   bsa:preferredLabel "Animals"@en ;
   bsa:preferredLabel "Dyr"@no ;
   bsa:alternativeLabel "Animalia"@en, "Animalia"@no ;
-  bsa:narrower :c00001, :c00003
+  bsa:narrower :c00001, :c00003 .
 
-:c00001 a :Concept ;
+:c00001 a bsa:Concept ;
   bsa:inScheme <http://example.org/fakevoc> ;
   bsa:preferredLabel "Those belonging to the emperor"@en ;
   bsa:preferredLabel "De som hører til keiseren"@no ;
@@ -24,7 +24,7 @@
   bsa:definition "Animals that belong to the emperor"@en ;
   bsa:narrower :c00002 .
 
-:c00002 a :Concept ;
+:c00002 a bsa:Concept ;
   bsa:inScheme <http://example.org/fakevoc> ;
   bsa:preferredLabel "Giraffes"@en ;
   bsa:preferredLabel "Sjiraffer"@no ;
@@ -33,7 +33,7 @@
   bsa:definition "Magnificent animals of Africa"@en ;
   bsa:related :c00004 .
 
-:c00003 a :Concept ;
+:c00003 a bsa:Concept ;
   bsa:inScheme <http://example.org/fakevoc> ;
   bsa:preferredLabel "Enbalmed ones"@en ;
   bsa:preferredLabel "De balsamerte"@no ;
@@ -42,7 +42,7 @@
   bsa:definition "Animals that are enbalmed"@en ;
   bsa:narrower :c00004 .
 
-:c00004 a :Concept ;
+:c00004 a bsa:Concept ;
   bsa:inScheme <http://example.org/fakevoc> ;
   bsa:preferredLabel "Enbalmed qilins"@en ;
   bsa:preferredLabel "Balsamerte qilins"@no ;
