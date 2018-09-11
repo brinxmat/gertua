@@ -7,10 +7,15 @@
 
 Feature: Admin user features
 
-  Scenario: An API admin user is authenticated and authorised
-    Given that there is an API admin user
-    When the API admin user provides valid credentials
-    Then the API admin user is authorised to use the admin API services
+  Scenario: An API admin user authenticates themselves
+    Given that there is an API admin user with valid credentials
+    When they provide these credentials
+    Then they are authenticated and receive a valid authentication token
+
+  Scenario: An API admin user is authorised
+    Given that an API admin user has a valid authentication token
+    When they submit the authentication token
+    Then they are authorised to access the administration APIs
 
   Scenario: An API admin user creates a new entity registry
     Given that the API admin user is authenticated
