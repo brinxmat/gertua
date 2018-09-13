@@ -48,22 +48,33 @@ Feature: Admin user features
     When the anonymous user requests the entity
     Then the response contains an ETag and a Last-Modified header
     
-  Scenario: An anonymous user views an entity specifying a specific format
+  Scenario: An anonymous user views an entity specifying an RDF serialization
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
-    When the anonymous user requests the entity with format:
+    When the anonymous user requests the entity specifying an Accept header with:
       | application/ld+json     |
       | application/n-triples   |
       | application/rdf+xml     |
       | application/turtle      |
-      | text/html               |
       | application/json        |
       | application/rdf         |
+    Then anonymous user can view the data in the given serialization
+
+  Scenario: An anonymous user views an entity specifying as HTML
+    Given that there is an existing entity registry with a schema
+    And that there is an entity in the registry
+    When the anonymous user requests the entity specifying an Accept header with text/html
+    Then anonymous user can view the data in the given format
+
+  Scenario: An anonymous user views an entity specifying a specific MARC format
+    Given that there is an existing entity registry with a schema
+    And that there is an entity in the registry
+    When the anonymous user requests the entity specifying an Accept header with:
       | application/marcxml+xml |
       | application/marc        |
       | application/mads+xml    |
       | application/marcxml     |
-    Then anonymous user can view the data in the format
+    Then anonymous user can view the data in the given MARC format
   
   @NotMVP
   Scenario: An anonymous user views an entity specifying a specific format and specific profile
