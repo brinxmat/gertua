@@ -51,7 +51,7 @@ Feature: Admin user features
   Scenario: An anonymous user views an entity specifying an RDF serialization
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
-    When the anonymous user requests the entity specifying an Accept header with:
+    When the anonymous user requests the entity specifying an Accept header with value:
       | application/ld+json     |
       | application/n-triples   |
       | application/rdf+xml     |
@@ -60,16 +60,16 @@ Feature: Admin user features
       | application/rdf         |
     Then anonymous user can view the data in the given serialization
 
-  Scenario: An anonymous user views an entity specifying as HTML
+  Scenario: An anonymous user views an entity as HTML
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
-    When the anonymous user requests the entity specifying an Accept header with text/html
+    When the anonymous user requests the entity specifying an Accept header with value text/html
     Then anonymous user can view the data in the given format
 
   Scenario: An anonymous user views an entity specifying a specific MARC format
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
-    When the anonymous user requests the entity specifying an Accept header with:
+    When the anonymous user requests the entity specifying an Accept header with value:
       | application/marcxml+xml |
       | application/marc        |
       | application/mads+xml    |
@@ -77,21 +77,21 @@ Feature: Admin user features
     Then anonymous user can view the data in the given MARC format
   
   @NotMVP
-  Scenario: An anonymous user views an entity specifying a specific format and specific profile
+  Scenario: An anonymous user views an entity specifying a specific RDF serialization and a specific profile
     Given that there is an existing entity registry with a schema
     And that there is an entity in the registry
-    When the anonymous user requests the entity with format:
+    When the anonymous user requests the entity specifying an Accept header with value:
       | application/ld+json     |
       | application/n-triples   |
       | application/rdf+xml     |
       | application/turtle      |
       | application/json        |
       | application/rdf         |
-    And specifies a request header Accept-schema with a value:
+    And specifies an Accept-schema header with a value:
       | native-uri   |
       | skos-uri     |
       | bibframe-uri |
-    Then anonymous user can view the data in the format and schema requested
+    Then anonymous user can view the data in the serialization and profile requested
 
   Scenario: A registry admin user populates a registry
     Given that the registry admin user is authenticated
