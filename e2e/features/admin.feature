@@ -38,12 +38,12 @@ Feature: Admin user features
     Then anonymous user can view the entity's data in the native database format
 
   Scenario: An anonymous user views API information
-    Given that there is an existing entity registry
+    And that there is an existing entity registry with a schema
     When an anonymous user requests the OpenAPI documentation
     Then the OpenAPI documentation is returned
 
   Scenario: An anonymous user submits a request to see if a resource is modified
-    Given that there is an existing entity registry
+    Given that there is an existing entity registry with a schema
     And that there is an existing entity in the registry
     When the anonymous user requests the entity
     Then the response contains an ETag and a Last-Modified header
@@ -91,31 +91,31 @@ Feature: Admin user features
 
   Scenario: An API admin user deletes an existing, empty entity registry
     Given that the API admin user is authenticated
-    And that there is an existing, empty entity registry
+    And that there is an existing, empty entity registry with a schema
     When the API admin user request deletion of an entity registry
     Then the empty entity registry is deleted
 
   Scenario: An API admin user updates an existing, empty entity registry
     Given that the API admin user is authenticated
-    And that there is an existing, empty entity registry
+    And that there is an existing, empty entity registry with a schema
     When the API admin user updates the metadata and validation schemas of the entity registry
     Then the entity registry is updated
 
   Scenario: An API admin user attempts to delete an existing, populated entity registry
     Given that the API admin user is authenticated
-    And that there is an existing, populated entity registry
+    And that there is an existing, populated entity registry with a schema
     When the API admin user attempts to delete the entity registry
     Then the API admin user receives information that they cannot delete the entity registry until the populated data is deleted
 
   Scenario: An API admin user attempts to update an existing, populated entity registry
     Given that the API admin user is authenticated
-    And that there is an existing, populated entity registry
+    And that there is an existing, populated entity registry with a schema
     When the API admin user attempts to update the entity registry
     Then the API admin user receives information that they cannot delete the entity registry until the populated data is deleted
 
   Scenario: An API admin user deletes populated data from an entity registry
     Given that the API admin user is authenticated
-    And that there is an existing, populated entity registry
+    And that there is an existing, populated entity registry with a schema
     When the API admin user deletes the data in the entity registry
     Then the API admin user receives information that the data is deleted
 
