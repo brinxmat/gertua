@@ -130,4 +130,9 @@ Feature: Admin user features
     When the API admin user deletes the data in the entity registry
     Then the API admin user receives information that the data is deleted
 
+  Scenario: An API admin user gives access privileges to an entity registry admin user
+    Given that the API admin user is authenticated
+    And that there is an existing entity registry with a schema
+    When the API admin user associates an email address with read/write privileges for the named entity registry
+    Then the entity registry admin user has read/write access for the entity registry
 
