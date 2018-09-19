@@ -1,0 +1,101 @@
+{
+	"@context": {
+		"name": "https://example.org/db#name",
+		"validation": "https://example.org/db#validation"
+	},
+	"name": "testDB",
+	"validation": {
+		"@context": {
+			"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+			"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+			"xsd": "http://www.w3.org/2001/XMLSchema#",
+			"@vocab": "http://www.w3.org/ns/shacl#",
+			"sh": "http://www.w3.org/ns/shacl#",
+			"cs": "https://path/to/our/ConceptScheme#",
+			"bsa": "https://path/to/bsa#",
+			"type": "@type",
+			"id": "@id",
+			"nodeKind": {
+				"@type": "@id"
+			},
+			"path": {
+				"@type": "@id"
+			},
+			"value": {
+				"@type": "@id"
+			},
+			"datatype": {
+				"@type": "@id"
+			},
+			"targetClass": {
+				"@type": "@id"
+			}
+		},
+		"@graph": [{
+			"id": "cs:ConceptShape",
+			"type": "NodeShape",
+			"closed": true,
+			"property": [{
+					"maxCount": 1,
+					"minCount": 1,
+					"nodeKind": "sh:IRI",
+					"path": "bsa:inScheme",
+					"value": "cs:TheTargetConceptScheme"
+				},
+				{
+					"datatype": "rdf:langString",
+					"minCount": 0,
+					"path": "bsa:alternativeLabel",
+					"uniqueLang": false
+				},
+				{
+					"maxCount": 1,
+					"minCount": 0,
+					"nodeKind": "sh:IRI",
+					"path": "bsa:broader"
+				},
+				{
+					"maxCount": 1,
+					"minCount": 1,
+					"value": "bsa:Concept",
+					"path": "rdf:type"
+				},
+				{
+					"datatype": "rdf:langString",
+					"minCount": 1,
+					"path": "bsa:definition",
+					"uniqueLang": true
+				},
+				{
+					"minCount": 0,
+					"nodeKind": "sh:IRI",
+					"path": "bsa:related"
+				},
+				{
+					"datatype": "xsd:string",
+					"maxCount": 1,
+					"minCount": 1,
+					"path": "bsa:identifier"
+				},
+				{
+					"minCount": 0,
+					"nodeKind": "sh:IRI",
+					"path": "bsa:narrower"
+				},
+				{
+					"minCount": 0,
+					"nodeKind": "sh:IRI",
+					"path": "bsa:seeAlso"
+				},
+				{
+					"datatype": "rdf:langString",
+					"minCount": 1,
+					"path": "bsa:preferredLabel",
+					"uniqueLang": true
+				}
+			],
+			"targetClass": "bsa:Concept"
+		}]
+	}
+}
+
