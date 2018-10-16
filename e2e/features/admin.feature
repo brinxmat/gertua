@@ -109,7 +109,7 @@ Feature: Admin user features
   Scenario: An API admin user updates an existing, empty entity registry
     Given that the API admin user is authenticated
     And that there is an existing, empty entity registry with a schema
-    When the API admin user updates the metadata and validation schemas of the entity registry
+    When the API admin user updates the validation schema of the entity registry
     Then the entity registry is updated
 
   Scenario: An API admin user attempts to delete an existing, populated entity registry
@@ -118,11 +118,11 @@ Feature: Admin user features
     When the API admin user attempts to delete the entity registry
     Then the API admin user receives information that they cannot delete the entity registry until the populated data is deleted
 
-  Scenario: An API admin user attempts to update an existing, populated entity registry
+  Scenario: An API admin user attempts to update the validation schema of an existing, populated entity registry
     Given that the API admin user is authenticated
     And that there is an existing, populated entity registry with a schema
-    When the API admin user attempts to update the entity registry
-    Then the API admin user receives information that they cannot delete the entity registry until the populated data is deleted
+    When the API admin user attempts to update the validation schema of the entity registry
+    Then the API admin user receives information that they cannot update the entity registry validation schema until the populated data is deleted
 
   Scenario: An API admin user deletes populated data from an entity registry
     Given that the API admin user is authenticated
@@ -136,3 +136,20 @@ Feature: Admin user features
     When the API admin user associates an email address with read/write privileges for the named entity registry
     Then the entity registry admin user has read/write access for the entity registry
 
+  Scenario: An API admin user adds users with access privileges to an existing, populated entity registry
+    Given that the API admin user is authenticated
+    And that there is an existing, populated entity registry with a schema
+    When the API admin user adds users with access privileges from the entity registry
+    Then the access privileges for the entity registry are updated
+
+  Scenario: An API admin user removes users with access privileges to an existing, populated entity registry
+    Given that the API admin user is authenticated
+    And that there is an existing, populated entity registry with a schema
+    When the API admin user removes users with access privileges from the entity registry
+    Then the access privileges for the entity registry are updated
+
+  Scenario: An API admin user updates the entity registry metadata
+    Given that the API admin user is authenticated
+    And that there is an existing, populated entity registry with a schema
+    When the API admin user changes the metadata for the entity registry
+    Then the metadata for the entity registry is updated
