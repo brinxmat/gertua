@@ -8,10 +8,19 @@ Feature: An end user uses the service
   Scenario: An end user uses an authority in their library system
     Given that the end user is logged in in their library system
     And that they are cataloguing a thing
-    When they click on field 690
+    When they click on field:
+      | 648 |
+      | 650 |
+      | 655 |
+      | 651 |
+    And they select a source from:
+      | HUMORD         |
+      | UJUR           |
+      | Realfagstermer |
     And they enter a search term in the search box that appears
     And they select the correct term from the dropdown list that appears as they type
     Then they see that subfield $a is populated with the subject heading label
+    And they see that subfield $2 is populated with the source
     And they see that subfield $0 is populated with the subject heading URI
     
   Scenario: An end user adds a new subject heading
