@@ -20,6 +20,7 @@ Feature: An end user uses the service
     And they enter a search term in the search box that appears
     And they select the correct term from the dropdown list that appears as they type
     Then they see that subfield $a is populated with the subject heading label
+    And they see that subfield $b, $x, $y and $z are populated (where these are relevant)
     And they see that subfield $2 is populated with the source
     And they see that subfield $0 is populated with the subject heading URI
     
