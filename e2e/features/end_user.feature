@@ -5,6 +5,7 @@
 
 Feature: An end user uses the service
 
+  @MVP2
   Scenario: An end user uses an authority in their library system
     Given that the end user is logged in in their library system
     And that they are cataloguing a thing
@@ -23,7 +24,8 @@ Feature: An end user uses the service
     And they see that subfield $b, $x, $y and $z are populated (where these are relevant)
     And they see that subfield $2 is populated with the source
     And they see that subfield $0 is populated with the subject heading URI
-    
+  
+  @WIP
   Scenario: An end user adds a new subject heading
     Given that the end user is logged in in their library system
     And that they are cataloguing a thing
