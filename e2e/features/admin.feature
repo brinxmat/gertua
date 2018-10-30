@@ -7,18 +7,13 @@
 
 Feature: Admin user features
 
-  Scenario: An API admin user authenticates themselves
-    Given that there is an API admin user with valid credentials
-    When they provide these credentials
-    Then they are authenticated and receive a valid authentication token
-
-  Scenario: An API admin user is authorised
-    Given that an API admin user has a valid authentication token
-    When they submit the authentication token
-    Then they are authorised to access the administration APIs
+  Scenario: An API admin user provides a valid API key
+    Given that an API admin user has a valid API key for API administration
+    When they submit the API key
+    Then they can access the administration APIs
 
   Scenario: An API admin user creates a new entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     When the API admin user provides a properly formatted create-entity-registry-request providing information about:
       | Registry name              |
       | Registry admin users       |
@@ -26,7 +21,7 @@ Feature: Admin user features
     Then an entity registry that accepts only valid data is created
 
   Scenario: An registry admin user adds a single entity to a registry
-    Given that the registry admin user is authenticated
+    Given that the registry admin user has a valid API key for registry administration
     And that there is an existing entity registry with a schema
     When the registry admin user requests the creation of a new entity with properly formatted data
     Then the entity is created
@@ -94,62 +89,62 @@ Feature: Admin user features
     Then anonymous user can view the data in the serialization and profile requested
 
   Scenario: A registry admin user populates a registry
-    Given that the registry admin user is authenticated
+    Given that the registry admin user has a valid API key for registry administration
     And that there is an existing entity registry with a schema
     And that the registry admin user has a set of properly schema-formatted data
     When the registry admin user bulk uploads the data to the entity registry
     Then the data is available in the entity registry
 
   Scenario: An API admin user deletes an existing, empty entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, empty entity registry with a schema
     When the API admin user request deletion of an entity registry
     Then the empty entity registry is deleted
 
   Scenario: An API admin user updates an existing, empty entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, empty entity registry with a schema
     When the API admin user updates the validation schema of the entity registry
     Then the entity registry is updated
 
   Scenario: An API admin user attempts to delete an existing, populated entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user attempts to delete the entity registry
     Then the API admin user receives information that they cannot delete the entity registry until the populated data is deleted
 
   Scenario: An API admin user attempts to update the validation schema of an existing, populated entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user attempts to update the validation schema of the entity registry
     Then the API admin user receives information that they cannot update the entity registry validation schema until the populated data is deleted
 
   Scenario: An API admin user deletes populated data from an entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user provides a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user deletes the data in the entity registry
     Then the API admin user receives information that the data is deleted
 
   Scenario: An API admin user gives access privileges to an entity registry admin user
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing entity registry with a schema
     When the API admin user associates an email address with read/write privileges for the named entity registry
     Then the entity registry admin user has read/write access for the entity registry
 
   Scenario: An API admin user adds users with access privileges to an existing, populated entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user adds users with access privileges from the entity registry
     Then the access privileges for the entity registry are updated
 
   Scenario: An API admin user removes users with access privileges to an existing, populated entity registry
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user removes users with access privileges from the entity registry
     Then the access privileges for the entity registry are updated
 
   Scenario: An API admin user updates the entity registry metadata
-    Given that the API admin user is authenticated
+    Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
     When the API admin user changes the metadata for the entity registry
     Then the metadata for the entity registry is updated
@@ -160,6 +155,7 @@ Feature: Admin user features
     Then they see metadata related to the entity registry regarding:
       | Registry name                    |
       | Registry type                    |
+      | Publisher                        |
       | License for the data             |
       | Owner organisation               |
       | Participating organisations      |
