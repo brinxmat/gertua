@@ -8,13 +8,13 @@ Feature: An end user uses the service
   @MVP2
   Scenario: An end user uses an authority in their library system
     Given that the end user is logged in in their library system
-    And that they are cataloguing a thing
+    And that they are cataloguing a thing in the metadata client
     When they click on field:
       | 648 |
       | 650 |
       | 655 |
       | 651 |
-    And they select a source from:
+    And they select a subject heading source from:
       | HUMORD         |
       | UJUR           |
       | Realfagstermer |
