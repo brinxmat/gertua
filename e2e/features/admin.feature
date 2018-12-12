@@ -128,9 +128,11 @@ Feature: Admin user features
   Scenario: An API admin user associates an API key with the registry admin role for a registry
     Given that the API admin user has a valid API key for API administration
     And that there is an existing, populated entity registry with a schema
-    When the API admin user submits a new API key to replace the current valid API key
+    When the API admin user requests a new API key to replace the current valid API key
     Then the API key is updated
+    And the user receives the updated API key
 
+  @NotMVP
   Scenario: A registry admin adds registry admin API keys to an existing, populated entity registry
     Given that the registry admin user has a valid API key for registry administration
     And that there is an existing, populated entity registry with a schema
